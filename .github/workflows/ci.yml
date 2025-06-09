@@ -25,3 +25,10 @@ jobs:
       env:
         DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         DATABRICKS_BUNDLE_ENV: dev
+
+    - name: Run Bundle
+      run: databricks bundle run
+      working-directory: .
+      env:
+        DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        DATABRICKS_BUNDLE_ENV: dev
