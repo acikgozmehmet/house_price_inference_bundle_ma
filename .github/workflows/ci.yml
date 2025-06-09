@@ -20,9 +20,8 @@ jobs:
         version: 0.246.0
 
     - name: Deploy Bundle
-      uses: databricks/asset-bundle-deploy@v1
-      with:
-        bundle-root: .
-        target: dev
+      run: databricks bundle deploy
+      working-directory: .
       env:
         DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+        DATABRICKS_BUNDLE_ENV: dev
