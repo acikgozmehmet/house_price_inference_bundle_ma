@@ -27,7 +27,7 @@ jobs:
         DATABRICKS_BUNDLE_ENV: dev
 
     - name: Run Bundle
-      run: databricks bundle run
+      run: databricks bundle run inference_app
       working-directory: .
       env:
         DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
