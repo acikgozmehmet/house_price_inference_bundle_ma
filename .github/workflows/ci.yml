@@ -21,8 +21,8 @@ jobs:
 
     - name: Grant Unity Catalog Permissions
       run: |
-        databricks sql -e "GRANT USE CATALOG ON CATALOG mlops_dev TO 'acikgozmm@gmail.com'"
-        databricks sql -e "GRANT USE SCHEMA ON SCHEMA mlops_dev.acikgozm TO 'acikgozmm@gmail.com'"
+        databricks sql -e "GRANT USE CATALOG ON CATALOG mlops_dev TO 'acikgozmm'"
+        databricks sql -e "GRANT USE SCHEMA ON SCHEMA mlops_dev.acikgozm TO 'acikgozmm'"
       env:
         DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
         DATABRICKS_HOST: https://dbc-c2e8445d-159d.cloud.databricks.com
