@@ -3,6 +3,10 @@ on:
   push:
     branches: [main]
 
+env:
+  DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+  DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -19,16 +23,23 @@ jobs:
       with:
         version: 0.246.0
 
+    - name: Configure Databricks CLI
+      run: |
+        databricks configure --token <<EOF
+        $DATABRICKS_HOST
+        $DATABRICKS_TOKEN
+        EOF
+
     - name: Deploy Bundle
       run: databricks bundle deploy
       working-directory: .
       env:
-        DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
+        # DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
         DATABRICKS_BUNDLE_ENV: dev
 
     - name: Run Bundle
       run: databricks bundle run inference_app
       working-directory: .
       env:
-        DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
+        # DATABRICKS_TOKEN: ${{ secrets.SP_TOKEN }}
         DATABRICKS_BUNDLE_ENV: dev

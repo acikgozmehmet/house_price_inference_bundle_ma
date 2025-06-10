@@ -2,7 +2,7 @@ version: '3'
 dotenv: [.env]
 
 vars:
-  APP_NAME: inference_app
+  APP_NAME: inference_app_ma
 
 tasks:
   validate:
