@@ -8,6 +8,9 @@ import requests
 
 from requests.auth import HTTPBasicAuth
 
+print("-" * 20)
+print(os.environ['DATABRICKS_HOST'])
+print("-" * 20)
 # Set MLflow to use Unity Catalog as the registry
 mlflow.set_registry_uri("databricks-uc")
 
